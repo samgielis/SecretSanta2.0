@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Secret Santa 2.0 - Online Target Picker</title>
+	
+	<!-- FUNCTIONAL DEPENDECIES -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script> 
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"> </script>
+	<script src="dep/sweetalert.js"></script>
+	
+	<!-- STYLE DEPENDECIES -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700,600italic,600,400italic,300italic,300,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="dep/sweetalert.css" rel="stylesheet" type="text/css">
+	
+	<!-- OWN STYLE -->
+    <link href="css/ss2.main.css" rel="stylesheet" type="text/css">
+    <link href="css/ss2.page0.css" rel="stylesheet" type="text/css">
+    <link href="css/ss2.page1.css" rel="stylesheet" type="text/css">
+    <link href="css/ss2.page2.css" rel="stylesheet" type="text/css">
+    <link href="css/ss2.page3.css" rel="stylesheet" type="text/css">
+    
+	<!-- OWN FUNCTIONALITY -->
+    <script src="js/ss2.page1.js"> </script> 
+    <script src="js/ss2.page2.js"> </script> 
+    <script src="js/ss2.page3.js"> </script> 
+    <script src="js/ss2.backbone.js"> </script> 
+    <script src="js/ss2.sec.js"> </script> 
+	<script src="js/ss2.curr.js"> </script> 
+	<script src="js/ss2.scroll.js"> </script>
+</head>
+
+<body>
+    <div id="page-wrap">
+        <div id="page0">
+            <a id="welcome" name="welcome"></a>
+            <div class="page-padding"></div>
+            <div class="page-content" style="text-align:center;">
+                <p class="p0title">Secret Santa 2.0</p>
+                <p class="p0subtitle">Online Target Picker</p>
+            </div>
+            <div class="page-end" style="text-align:center;">
+                <a class="bigredbtn" href="#creategroup" id="strtbtn"><i class="fa fa-gift fa-1.2x"></i> Get Started!</a>
+                <div id="btnspacer" style="width='100%'; height='10px';"></div>
+            </div>
+        </div><!--END page-->
+        <div id="page1">
+            <a id="creategroup" name="creategroup"></a>
+            <div class="page-padding"></div>
+            <div class="page-title" style="text-align:center; padding-bottom: 1cm;">
+                Specify Group Information
+            </div>
+            <div class="page1-content">
+                <form class="form-container" id="groupform" name="groupform">
+                    <div class="form-title">
+                        <h2>Group Details</h2>
+                    </div>
+                    <div class="form-title">
+                        Host Email
+                    </div><input class="form-field" id="gemail" name="gemail" placeholder="Participants' can use this to send questions to." type="email"><br>
+                    <div class="form-title">
+                        Message to Participants
+                    </div>
+                    <textarea class="form-field form-textarea" id="gmessage" name="message" placeholder="Optional - You can add a message that will be sent to each participant."></textarea><br>
+                    <div class="form-title">
+                        Minimum Budget
+                    </div><input class="form-field" id="gminp" max="99999" name="pricefrom" required="" step="1" type="number">
+                    <div class="form-title">
+                        Maximum Budget
+                    </div><input class="form-field" id="gmaxp" max="99999" name="priceto" required="" step="1" type="number">
+                    <div class="form-title">
+                        Currency
+                    </div><select class="form-field" id="gcurrency" name="currencies" required="">
+                        <option selected value="">
+                            Select currency
+                        </option>
+                    </select>
+                    <div class="submit-container">
+                        <input class="submit-button" id="creategroupbtn" type="button" value="Submit">
+                    </div>
+                </form>
+            </div>
+            <div class="page-padding"></div>
+            <div class="page-end" style="text-align:center;">
+                <a class="bigredbtn" href="#addparticipants"><i class="fa fa-user-plus"></i> Continue</a>
+            </div>
+            <div class="page-padding"></div>
+        </div><!--END page-->
+        <div class="page" id="page2">
+            <a id="addparticipants" name="addparticipants"></a>
+            <div class="page-padding"></div>
+            <div class="page-title" style="text-align:center; padding-bottom: 1cm;">
+                Add Participants
+            </div>
+            <div class="page-content" style="text-align:center;">
+                <section>
+                    <form class="form-container" id="partiform" name="partiform">
+                        <div class="form-title">
+                            <h2>Add Participant</h2>
+                        </div>
+                        <div class="form-title">
+                            First Name
+                        </div><input class="form-field" id="pfname" name="pfname" type="text"><br>
+                        <div class="form-title">
+                            Last Name
+                        </div><input class="form-field" id="plname" name="plname" type="text"><br>
+                        <div class="form-title">
+                            Email
+                        </div><input class="form-field" id="pemail" name="pemail" placeholder="Enter a valid email address" type="email"><br>
+                        <div class="form-title">
+                            Wishlist Info
+                        </div>
+                        <textarea class="form-field form-textarea" id="pwishi" name="wishlistinfo" placeholder="Optional - Provide some information about this participant's gift preferences."></textarea><br>
+                        <div class="submit-container">
+                            <input class="submit-button" id="addparticipantbtn" type="button" value="Submit">
+                        </div>
+                    </form>
+                    <div class="page-padding"></div>
+                    <div class="page-padding"></div>
+                    <div class="page-title" style="text-align:center; padding-bottom: 1cm;">
+                        Overview
+                    </div>
+                    <form class="form-container" style="min-width:50%; padding:20px; width:50%;">
+                        <div class="form-title">
+                            <h2>Current Participants</h2>
+                        </div>
+                        <div class="page2table" style="width:93%;height:200px; text-align:center; overflow: auto;">
+                            <table id="participanttable">
+                                <tr id="participanttableheadrow">
+                                    <td height="10">First Name</td>
+                                    <td>Last Name</td>
+                                    <td>Email</td>
+                                    <td height="10">Wishlist Info</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </section>
+                <div class="page-padding"></div>
+                <div class="page-padding"></div>
+                <div class="page-end" style="text-align:center;">
+                    <a class="bigredbtn" href="#finish"><i class="fa fa-envelope"></i> Continue</a>
+                </div>
+                <div class="page-padding"></div>
+            </div>
+        </div><!--END page-->
+        <div id="page3">
+            <a id="finish" name="finish"></a>
+            <div class="page-padding"></div>
+            <div class="page-title" style="text-align:center; padding-bottom: 1cm;">
+                Pick Targets & Notify!
+            </div>
+            <div style="min-height:1vh"></div>
+            <div class="page-content" style="text-align:center;">
+                <form class="form-container" style="display: inline-block; margin: 0 auto; text-align: center; min-width:30%; padding:10px; width:30%;">
+                    <div class="form-title">
+                        <div style="width :100%; height: 3vh"></div>
+                        <h2>Targets Assigned:</h2>
+                    </div><progress id="targetprog" max="1" value="0"></progress>
+                    <div style="width :100%; height: 1vh"></div>
+                    <p id="targetlbl" style="font-size:50%">INCOMPLETE</p>
+                    <div style="width :100%; height: 2vh"></div>
+                    <div class="form-title">
+                        <h2>Emails sent:</h2>
+                    </div><progress id="emailprog" max="100" value="0"></progress>
+                    <div style="width :200%; height: 1vh"></div>
+                    <p id="emaillbl" style="font-size:50%">0/0</p>
+                    <div style="width :100%; height: 2vh"></div>
+                    <div class="form-title">
+                        <h2>Status:</h2>
+                    </div>
+                    <p id="statuslbl" style="font-size:50%">WAITING TO GET STARTED</p>
+                    <div style="width :100%; height: 3vh"></div>
+                </form>
+                <div class="page-padding"></div>
+                <div class="page-end" style="text-align:center;">
+                    <button class="bigredbtn" id="sendmailbtn" type="button"><i class="fa fa-envelope"></i> Notify Participants!</button>
+                </div>
+            </div>
+            <div style="width :100%; height: 1vh"></div>
+        </div><!--END page-->
+    </div><!--END page-wrap-->
+    <div id="footer">
+	<br/>
+		<p><b>Secret Santa 2.0</b> was developed by <b>Sam Gielis</b>.</p> In case of questions, please contact <b>secretsanta2point0@gmail.com</b>.</p>
+		<p>Special thanks to <b>Jessie C.</b> for urging me to create this.</p>
+		<br/>
+		<a href="https://github.com/samgielis/SecretSanta2.0"><img src="img/ghub.png" style="width:24px;height:24px;" alt="Secret Santa 2.0 on Github" /></a>
+		<div style="height:10px; width:100%;"></div>
+	</div>
+</body>
+</html>
