@@ -106,7 +106,7 @@ Group.prototype.notify = function(){
 	for(var i = 0; i < this.participants.length; i++){
 		setStatus("SENDING EMAIL NOTIFICATION TO "+this.participants[i].fname+" "+this.participants[i].lname+".");
 		
-		//sendEmail(this.participants[i],this.targets[i],this);
+		sendEmail(this.participants[i],this.targets[i],this);
 		setEmailCount(i+1,group.participants.length);
 	}	
 	setStatus("MISSION COMPLETE!");
