@@ -1,0 +1,46 @@
+/* ---------Single Page Website CSS by Kelly King ----------*/
+
+*{ margin: 0 auto;}
+
+
+body {
+	background: black;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	margin: 0 auto; 
+	font-family: 'Titillium Web', sans-serif;
+	height:100vh;
+	}
+
+#footer {
+	top:0px;
+	left:0px;
+	background:black; 
+	min-height:120px; 
+	width:100%;
+	position: relative;
+	color:white;
+	font-size: 0.8em;
+	text-align:center;
+	}
+
+
+
+
+
+.page-padding {height:60px; width:100%;}
+.page-content {min-height:78vh; width:100%; 	overflow:inherit;
+}
+.page1-content {min-height:100vh; width:100%;text-align:center;}
+.page-end {height:50px; width:100%;}
+.page-title{
+	text-align:center;
+	font-size: 5em;
+	font-weight: 600;
+	color: white;
+}
+a { color:white; text-decoration:none;}
+	
+a:hover { text-decoration:underline;}
