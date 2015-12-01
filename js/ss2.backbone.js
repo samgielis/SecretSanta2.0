@@ -195,6 +195,6 @@ function getMailText(p,t,group){
 	mailtext+= "<p> That's it! We hope you'll have a great time looking for and being suprised with a perfect present! Merry Christmas!</p>";
 	mailtext+= "<p></p>";
 	mailtext+= "<p>Sam Gielis</p>";
-	mailtext+= "<p>Find Secret Santa 2.0 at https://github.com/samgielis/SecretSanta2.0</p>";
+	mailtext+= "<p>Find Secret Santa 2.0 at https://samgielis.github.io/SecretSanta2.0/</p>";
 	return mailtext;
 }
