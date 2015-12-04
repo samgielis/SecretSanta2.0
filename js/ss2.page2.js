@@ -25,6 +25,7 @@ $(function() {
 						addParticipant(pfname,plname,pemail,pwishi);
 						setEmailCount(0,group.participants.length);
 						swal("Success", "Participant "+pfname+" "+plname+ " added.", "success");
+						clearform();
 					}
 				}
 				else
@@ -56,7 +57,13 @@ $(function() {
 	$('.hide').css('height', '0');
 
  }
- 
+
+function clearform(){
+	$( "#pfname" ).val('');
+	$( "#plname" ).val('');
+	$( "#pemail" ).val('');
+	$( "textarea#pwishi" ).val('');
+}	
 function AddAfter(rowId){
     
 }
